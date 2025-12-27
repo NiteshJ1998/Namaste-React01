@@ -1,0 +1,32 @@
+{
+  "name": "react-01",
+  "version": "1.0.0",
+  "description": "Namaste react",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NiteshJ1998/Namaste-React01.git"
+  },
+  "keywords": [
+    "namaste",
+    "react",
+    "react"
+  ],
+  "author": "Nitesh Jaiswar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NiteshJ1998/Namaste-React01/issues"
+  },
+  "homepage": "https://github.com/NiteshJ1998/Namaste-React01#readme",
+  "devDependencies": {
+    "parcel": "^2.16.3"
+  },
+  "dependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  }
+}
