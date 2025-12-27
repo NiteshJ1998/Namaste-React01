@@ -1,6 +1,4 @@
-# Namaste-React01
-
-# Parcel
+# Namaste React
 
 - HMR - Hot Module Replacement - parcel keeps track of file changes via file watcher algorithm and renders the changes in the files
 - File watcher algorithm - made with C++
