@@ -6,6 +6,11 @@ import Shimmer from "./Shimmer";
 const Body = () => {
   const [listOfRestaurants, setListofRestaurants] = useState([]);
 
+  const [searchText, setSearchText] = useState("");
+
+  console.log("body rendered ");
+
+  // Whenever state variable updates, react triggers a reconcillation cycle(re-render the components)
   useEffect(() => {
     fetchData();
   }, []);
@@ -26,9 +31,32 @@ const Body = () => {
   if (listOfRestaurants.length === 0) {
     return <Shimmer />;
   }
-  return (
+  return listOfRestaurants.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
+        <div className="search">
+          <input
+            type="text"
+            className="search-box"
+            input={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
+          <button
+            className="search-btn"
+            onClick={() => {
+              const filtered = listOfRestaurants.filter((res) =>
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+              );
+              setListofRestaurants(filtered);
+            }}
+          >
+            Search
+          </button>
+        </div>
         <button
           className="filter-btn"
           onClick={() => {
