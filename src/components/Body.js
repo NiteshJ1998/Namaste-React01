@@ -5,7 +5,13 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [listOfRestaurants, setListofRestaurants] = useState([]);
+  const [filterRestaurant, setFilterRestaurants] = useState([]);
 
+  const [searchText, setSearchText] = useState("");
+
+  console.log("body rendered ");
+
+  // Whenever state variable updates, react triggers a reconcillation cycle(re-render the components)
   useEffect(() => {
     fetchData();
   }, []);
@@ -21,14 +27,40 @@ const Body = () => {
     setListofRestaurants(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    setFilterRestaurants(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
 
   if (listOfRestaurants.length === 0) {
     return <Shimmer />;
   }
-  return (
+  return listOfRestaurants.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
+        <div className="search">
+          <input
+            type="text"
+            className="search-box"
+            input={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
+          <button
+            className="search-btn"
+            onClick={() => {
+              const filtered = listOfRestaurants.filter((res) =>
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+              );
+              setFilterRestaurants(filtered);
+            }}
+          >
+            Search
+          </button>
+        </div>
         <button
           className="filter-btn"
           onClick={() => {
@@ -44,7 +76,7 @@ const Body = () => {
       </div>
 
       <div className="res-container">
-        {listOfRestaurants.map((restaurant) => (
+        {filterRestaurant.map((restaurant) => (
           <ResCard key={restaurant.info.id} resData={restaurant} />
         ))}
       </div>
