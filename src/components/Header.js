@@ -3,14 +3,14 @@ import { useState, useEffect } from "react";
 
 const Header = () => {
   const [loginbtn, setLoginBtn] = useState("login");
-  console.log("Header fn called");
+  //   console.log("Header fn called");
 
   // if no dependency array => useEffect get called on every render
   // if dependency array is empty = [] => useEffect get called on intial render(just once)
   // if dependency array is [loginbtn] => called everytime when loginbtn is updated
-  useEffect(() => {
-    console.log("useEffect called");
-  }, []);
+  //   useEffect(() => {
+  //     console.log("useEffect called");
+  //   }, []);
 
   return (
     <div className="header">
