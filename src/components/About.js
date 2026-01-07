@@ -1,7 +1,12 @@
 import React from "react";
-
+import User from "./User";
 const About = () => {
-  return <h2>This is about page</h2>;
+  return (
+    <div>
+      <h2>This is about page</h2>
+      <User />
+    </div>
+  );
 };
 
 export default About;
